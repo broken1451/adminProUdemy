@@ -11,5 +11,5 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+// ng g c components/nombrecomponente --module=app.module --spec=false
 }
