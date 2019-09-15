@@ -12,6 +12,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 
+// Servicios
+    // import { SettingsService } from './services/settings/settings.service';
+    // import { SettingsService } from './services/services.index';
+import { ServiceModule } from './services/service.module';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +28,11 @@ import { RegisterComponent } from './login/register.component';
     BrowserModule,
     PagesModule,
     FormsModule,
+    ServiceModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [// SettingsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
@@ -54,6 +61,7 @@ import { RegisterComponent } from './login/register.component';
 // import { SidebarComponent } from './shared/sidebar/sidebar.component';
 // import { BreadcumbsComponent } from './shared/breadcumbs/breadcumbs.component';
 // import { PagesComponent } from './pages/pages.component';
+import { ServiceModule } from './services/service.module';
 
 
 @NgModule({
