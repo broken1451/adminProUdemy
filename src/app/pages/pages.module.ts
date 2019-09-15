@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+// Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { PagesComponent } from './pages.component';
+import { PormesasComponent } from './pormesas/pormesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 // Temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
@@ -36,6 +39,8 @@ import { SettingsService } from '../services/settings/settings.service';
     IncrementadorComponent,
     GraficoDonaComponent,
     AccountSettingsComponent,
+    PormesasComponent,
+    RxjsComponent,
 
   ],
   exports: [
