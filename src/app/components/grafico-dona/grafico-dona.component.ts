@@ -12,9 +12,14 @@ export class GraficoDonaComponent implements OnInit {
     @Input() ChartData: any[] = [];
     @Input() ChartType: any = '';
     @Input() Chartcolor: any[];
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
 }
+
+
+
+
