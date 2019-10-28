@@ -42,6 +42,7 @@ export class AccountSettingsComponent implements OnInit {
       selector.classList.remove('working');
     }
     link.classList.add('working');
+    console.log('link: ', link);
   }
 
   colocarCheck() {

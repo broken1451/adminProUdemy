@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PagesModule } from './pages/pages.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Rutas
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,8 @@ import { RegisterComponent } from './login/register.component';
 import { ServiceModule } from './services/service.module';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { ServiceModule } from './services/service.module';
     PagesModule,
     FormsModule,
     ServiceModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [// SettingsService
   ],
