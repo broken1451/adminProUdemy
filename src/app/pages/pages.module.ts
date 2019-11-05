@@ -9,11 +9,10 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { PagesComponent } from './pages.component';
 import { PormesasComponent } from './pormesas/pormesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-
-// Temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // Modulos
 import { SharedModule } from '../shared/shared.module';
@@ -28,6 +27,11 @@ import { PagesRoute } from './pages.routes';
 // Servicios
 import { SettingsService } from '../services/settings/settings.service';
 
+// Pipes module
+import { PipesModule } from '../pipes/pipes.module';
+
+
+
 
 
 @NgModule({
@@ -41,7 +45,7 @@ import { SettingsService } from '../services/settings/settings.service';
     AccountSettingsComponent,
     PormesasComponent,
     RxjsComponent,
-
+    ProfileComponent
   ],
   exports: [
     DashboardComponent,
@@ -49,7 +53,8 @@ import { SettingsService } from '../services/settings/settings.service';
     Graficas1Component,
     PagesComponent,
     IncrementadorComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    ProfileComponent
 
   ],
   imports: [
@@ -57,7 +62,8 @@ import { SettingsService } from '../services/settings/settings.service';
     SharedModule,
     PagesRoute,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    PipesModule
     // pagesRoute
   ],
   providers: [

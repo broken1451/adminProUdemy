@@ -8,6 +8,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PormesasComponent } from './pormesas/pormesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/services.index';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesroutes: Routes = [
     {
@@ -21,6 +22,7 @@ const pagesroutes: Routes = [
           { path: 'promesas', component: PormesasComponent, data: {titulo: 'Promesas', descrip: 'Esto es la pagina de promesas'} },
           { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Reactividad con Rxjs', descrip: 'Esto es la pagina de los observables'} },
           { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Configuraciones del tema', descrip: 'Esto es la pagina de configuracion de temas'} },
+          { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'} },
           { path: '', pathMatch: 'full' , redirectTo: 'dashboard' },
         ]
        }

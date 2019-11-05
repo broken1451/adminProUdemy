@@ -1,0 +1,53 @@
+<div class="row animated fadeIn">
+
+        <div class="col-lg-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Perfil del Usuario</h4>
+                        <h6 class="card-subtitle">Nombre del usuario</h6>
+                        <form ngNativeValidate #formulario='ngForm' (ngSubmit)= 'guardar(formulario.value)' class="form p-t-20"> 
+                            <!-- <form ngNativeValidate #formulario='ngForm' (ngSubmit)= 'guardar(formulario)' class="form p-t-20">  con el valor fomulario  -->
+                            <div class="form-group">  
+                                <label for="exampleInputuname">Nombre de usuario</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="ti-user"></i></div>
+                                    <input type="text" class="form-control"  placeholder="Nombre de usuario" [(ngModel)]="usuario.nombre" name="nombre" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo de usuario</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="ti-email"></i></div>
+                                    <input type="email" class="form-control" placeholder="Correo de usuario" [(ngModel)]="usuario.email" name="email" [disabled]='usuario.google' required>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                               <i class="fa fa-save"></i> Guardar
+                            </button>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Foto del Usuario</h4>
+                        <h6 class="card-subtitle">{{usuario.nombre}}</h6>
+                        <img *ngIf="!imagenTemporal" [src]="usuario.img | imagen" class="w150" >
+                        <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150" >
+                        <!-- <br>
+                        <br> -->
+                        <!-- esto se ejecutara cada vez que cambia de cualquier manera si selecciona o cancela -->
+                        <input type="file" (change)='seleccionImagen($event.target.files[0])'> 
+                        <br><br>
+                        <button type="button" (click)="cambiarImagen()" [disabled]='!imagenSubir' class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i> Actualizar Foto 
+                        </button>
+                    </div>
+                 </div>
+            </div>
+
+</div>

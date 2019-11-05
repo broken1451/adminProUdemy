@@ -5,6 +5,7 @@ import { URLSERVICIO } from '../../config/config';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
 
 
 @Injectable({
@@ -17,7 +18,8 @@ export class UsuarioService {
 
 
   constructor(public httpClient: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private subirArchivoService: SubirArchivoService) {
     console.log('servicio de usuario listo');
     this.cargarStorage();
   }
@@ -97,6 +99,36 @@ export class UsuarioService {
                   return data.usuarioGuardado;
                 }));
   }
+
+  actualizarUsuario(usuario: Usuario) {
+
+    let url = URLSERVICIO + '/usuario/' + usuario._id + '?token=' + this.token; // llamada al servicio
+    console.log('url: ', url);
+    console.log('token: ', this.token);
+
+    return this.httpClient.put(url, usuario).pipe( map((data: any) => {
+      console.log('data del map: ', data);
+      let usuarioBD: Usuario =  data.usuarioId;
+      // this.usuario = data.usuarioId;
+      this.guardarStorage(usuarioBD._id, this.token, usuarioBD);
+      Swal.fire('Usuario Actualizado', usuario.nombre, 'success');
+      return data.usuarioId;
+    }));
+  }
+
+ // Metodo de cambiar imagen
+ cambiarImagen(archivo: File, id: string) {
+    console.log(id);
+    this.subirArchivoService.subirArchivo(archivo, 'usuarios', id)
+                            .then( ((data: any) => {
+                              this.usuario.img = data.usuarioImgGuardada.img;
+                              Swal.fire('Imagen actualizada exitosamente', this.usuario.nombre, 'success');
+                              this.guardarStorage(id, this.token, this.usuario);
+                              console.log(data);
+                              })).catch(((err) => {
+                                console.log(err);
+                            }));
+ }
 
 // Metodo de logout
   logout() {
