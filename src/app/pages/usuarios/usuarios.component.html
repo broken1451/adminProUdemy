@@ -1,0 +1,97 @@
+<div class="row animated fadeIn slow">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #inputBuscarUsuario type="text" class="form-control" placeholder="Buscar Usuario..." (keyup)='buscarUsuario(inputBuscarUsuario.value)' >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row animated fadeIn slow" *ngIf="loading"> 
+
+  <div class="col-sm-12">
+        <div class="alert-warning text-center">
+                <strong>Cargando</strong>
+                <br>
+                <i class="fa fa-refresh fa-2x fa-spin"></i>
+                <br>
+                <span>Espere por favor</span>
+            </div>
+  </div>
+
+</div>
+
+<div class="row animated fadeIn slow" *ngIf="noExiste"> 
+
+    <div class="col-sm-12">
+          <div class="alert-warning text-center">
+                  <strong style="padding: 5px !important; font-size: 50px;">El Usuario no existe</strong>
+                  <br>
+              </div>
+    </div>
+  
+  </div>
+
+<div class="row animated fadeIn slow"  *ngIf="!loading">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Usuario registrados (<small>{{totalRegistros}}</small>)</h3>
+                    <table class="table table-hover">
+                        <thead>
+                           <tr>
+                            <th>Imagen</th>
+                            <th>Correo</th>
+                            <th>Nombre</th>
+                            <th>Role</th>
+                            <th>Auth</th>
+                            <th></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                    <td class="w70">
+                                        <img (click)='mostrarModal(usuario)' [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                                    </td> 
+                                    <td>{{usuario.email}}</td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td class="rol">
+                                        {{usuario.role}}
+                                        <select [(ngModel)]="usuario.role" name="role" class="form-control">
+                                                <option  value="ADMIN_ROLE">Administrsador</option>
+                                                <option  value="USER_ROLE">Usuario</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <label for="" class="label label-danger" *ngIf="usuario.google">Goole</label>
+                                        <label for="" class="label label-info ml-1"  *ngIf="!usuario.google">Normal</label>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" (click)='guardarRolUsuario(usuario)'>  
+                                            <i class="fa fa-save"></i>
+                                        </button>
+
+                                        <button  class="btn btn-danger" (click)="borrarUsuario(usuario)"> 
+                                            <i class="fa fa-trash-o"></i> 
+                                        </button>
+                                    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-secondary" (click)="cambiarDesde(-4)">
+                      Anteriores
+                    </button>
+
+                    <button  class="btn btn-secondary ml-3" (click)="cambiarDesde(+4)">
+                       Siguientes
+                    </button>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+

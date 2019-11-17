@@ -13,6 +13,7 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 // Modulos
 import { SharedModule } from '../shared/shared.module';
@@ -29,6 +30,7 @@ import { SettingsService } from '../services/settings/settings.service';
 
 // Pipes module
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 
 
@@ -45,7 +47,9 @@ import { PipesModule } from '../pipes/pipes.module';
     AccountSettingsComponent,
     PormesasComponent,
     RxjsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsuariosComponent,
+    ModalUploadComponent
   ],
   exports: [
     DashboardComponent,
@@ -54,7 +58,9 @@ import { PipesModule } from '../pipes/pipes.module';
     PagesComponent,
     IncrementadorComponent,
     AccountSettingsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsuariosComponent,
+    ModalUploadComponent
 
   ],
   imports: [

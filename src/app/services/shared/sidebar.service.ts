@@ -19,6 +19,15 @@ export class SidebarService {
           {titulo: 'Rxjs', url: '/rxjs'},
           {titulo: 'Account Settings', url: '/account-settings'},
         ]
+    },
+    {
+      titulo: 'Mantenimientos',
+      icono: 'mdi mdi-gauge-lock-open',
+      submenu: [
+        {titulo: 'Usuario', url: '/usuarios'},
+        {titulo: 'Hospitales', url: '/hospitaless'},
+        {titulo: 'Medicos', url: '/medicos'},
+      ]
     }];
   }
 

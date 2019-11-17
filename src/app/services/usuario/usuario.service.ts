@@ -58,8 +58,8 @@ export class UsuarioService {
 
 // Metodo de log8in google
   loginGoogle(token: string) {
-    let url = URLSERVICIO + '/login/google';
-    return this.httpClient.post(url, {token:token}).pipe(map((resLoginGoole: any) => {
+    const url = URLSERVICIO + '/login/google';
+    return this.httpClient.post(url, {token}).pipe(map((resLoginGoole: any) => {
       console.log('resLoginGoole del map: ', resLoginGoole);
       this.guardarStorage(resLoginGoole.id, resLoginGoole.token, resLoginGoole.usuarioBdLogin);
       return resLoginGoole ;
@@ -75,7 +75,7 @@ export class UsuarioService {
       localStorage.removeItem('email');
     }
 
-    let url = URLSERVICIO + '/login';
+    const url = URLSERVICIO + '/login';
     return this.httpClient.post(url, usuario).pipe(map( (resLogin: any) => {
       console.log('resLogin del map: ', resLogin);
       // localStorage.setItem('id', resLogin.id);
@@ -90,7 +90,7 @@ export class UsuarioService {
 // Metodo de crear un usuario
   crearusuario(usuario: Usuario) {
 
-    let url = URLSERVICIO + '/usuario';
+    const url = URLSERVICIO + '/usuario';
 
     return this.httpClient.post(url, usuario)
                 .pipe(map( (data: any) => {
@@ -100,21 +100,61 @@ export class UsuarioService {
                 }));
   }
 
+  // Metodo de actualizar usuario
   actualizarUsuario(usuario: Usuario) {
 
-    let url = URLSERVICIO + '/usuario/' + usuario._id + '?token=' + this.token; // llamada al servicio
+    const url = URLSERVICIO + '/usuario/' + usuario._id + '?token=' + this.token; // llamada al servicio
     console.log('url: ', url);
     console.log('token: ', this.token);
 
     return this.httpClient.put(url, usuario).pipe( map((data: any) => {
       console.log('data del map: ', data);
-      let usuarioBD: Usuario =  data.usuarioId;
+      const usuarioBD: Usuario =  data.usuarioId;
       // this.usuario = data.usuarioId;
       this.guardarStorage(usuarioBD._id, this.token, usuarioBD);
       Swal.fire('Usuario Actualizado', usuario.nombre, 'success');
       return data.usuarioId;
     }));
   }
+
+  // Metodo de actualizar rol de usuario
+  guardarRolUsuario(usuario: Usuario) {
+
+    const url = URLSERVICIO + '/usuario/' + usuario._id + '?token=' + this.token; // llamada al servicio
+    console.log('url: ', url);
+    console.log('token: ', this.token);
+
+    return this.httpClient.put(url, usuario).pipe( map((data: any) => {
+      console.log('data del map: ', data);
+      // if (usuario respuesta === usuario logeado actualmente) {
+      if (usuario._id === this.usuario._id) {
+        const usuarioBD: Usuario =  data.usuarioId;
+        this.guardarStorage(usuarioBD._id, this.token, usuarioBD);
+      } else {
+        // console.log('usuario._id: ', usuario._id);
+        // console.log('this.usuario._id: ', this.usuario._id);
+        // Swal.fire('ROL no actualizado', 'Solo puede cambiar de rol el usuario logueado ', 'info');
+        // return;
+      }
+      console.log('usuario._id: ', usuario._id);
+      console.log('this.usuario._id: ', this.usuario._id);
+      Swal.fire('Usuario Actualizado', usuario.nombre, 'success');
+      return data.usuarioId;
+    }));
+  }
+
+  // Metodo de borrar un usuario
+  borrarUsuario(id: string) {
+
+    const url = URLSERVICIO + `/usuario/${id}?token=${this.token}`;
+    return this.httpClient.delete(url).pipe( map( (data: any) => {
+      Swal.fire('Usuario Borrado', 'El usuario con el nombre ' + data.usuarioBorradoId.nombre + ' ha sido borrado correctamente', 'success');
+      console.log(data);
+      return data;
+    }));
+  }
+
+
 
  // Metodo de cambiar imagen
  cambiarImagen(archivo: File, id: string) {
@@ -130,6 +170,24 @@ export class UsuarioService {
                             }));
  }
 
+
+// Metodo para obtener todos los usuarios de la bd
+  cargarUsuarios(desde?: number) {
+    const url = URLSERVICIO + `/usuario?desde=${desde}`;
+    return this.httpClient.get(url).pipe( map((dataUsuarios: any) => {
+        console.log('dataUsuarios del get: ', dataUsuarios);
+        const usuarioBD = dataUsuarios.usuarios;
+        return dataUsuarios;
+    }));
+  }
+
+// Metodo de buscar un usuario
+  buscarUsuario(terminoDeBusqueda: any) {
+
+    const url = URLSERVICIO + `/busqueda/coleccion/usuario/${terminoDeBusqueda}`;
+    return this.httpClient.get(url);
+  }
+
 // Metodo de logout
   logout() {
     this.usuario = null;
@@ -140,3 +198,248 @@ export class UsuarioService {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+  borrarUsuario(id: string) {
+    let url = URLSERVICIO + `/usuario/${id}?token=${this.token}`;
+    return this.httpClient.delete(url).pipe( map((res: any) => {
+      Swal.fire('Usuario Borrado', 'El usuario con el nombre ' + res.usuarioBorradoId.nombre + ' ha sido borrado correctamente', 'success');
+      return res;
+    }));
+  }
+
+
+*/

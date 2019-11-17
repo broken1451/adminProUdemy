@@ -1,0 +1,29 @@
+<!-- <div class="fondoNegro animated fadeIn " [ngClass]="oculto" > -->
+<div class="fondoNegro animated fadeIn " [ngClass]="{'oculto': modalUploadService.oculto === 'oculto'}">
+
+  <!-- Modal -->
+  <div class="modal animated fadeIn" style="display: block; cursor: pointer;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close animated fadeIn"  aria-label="Close" (click)="ocultarModal()" style=" cursor: pointer;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <img *ngIf="!imagenTemporal" [src]="'xxx'| imagen" class="w150" >
+          <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150" >
+          <input type="file" (change)='seleccionImagen($event.target.files[0])' #inputSubirImagen> 
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-warning" (click)="oculto='oculto'">Cerrar</button> -->
+          <button type="button" class="btn btn-warning" (click)="ocultarModal()">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)='subirImagen()'  [disabled]='!imagenTemporal'>Subir Imagen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> 
+  

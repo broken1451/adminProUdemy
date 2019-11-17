@@ -9,6 +9,7 @@ import { PormesasComponent } from './pormesas/pormesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/services.index';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const pagesroutes: Routes = [
     {
@@ -23,6 +24,9 @@ const pagesroutes: Routes = [
           { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Reactividad con Rxjs', descrip: 'Esto es la pagina de los observables'} },
           { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Configuraciones del tema', descrip: 'Esto es la pagina de configuracion de temas'} },
           { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'} },
+
+          // Mantenmiento
+          { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Mantenimiento de Usuarios'} },
           { path: '', pathMatch: 'full' , redirectTo: 'dashboard' },
         ]
        }

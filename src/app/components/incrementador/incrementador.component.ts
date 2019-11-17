@@ -56,6 +56,7 @@ export class IncrementadorComponent implements OnInit {
     // console.log('elementHtml: ', elementHtml.value);
 
 
+    console.log('eventNewValue: ', eventNewValue);
     if (eventNewValue >= 100) {
       this.progreso = 100;
     } else if (eventNewValue <= 0) {
@@ -70,9 +71,8 @@ export class IncrementadorComponent implements OnInit {
     // Con viewchild
     this.txtprogress.nativeElement.value = this.progreso;
     console.log('this.txtprogress ', this.txtprogress);
-    // this.cambioValor.emit(this.progreso);
-    this.cambiarValor(this.progreso);
-    console.log('eventNewValue: ', eventNewValue);
+    this.cambioValor.emit(this.progreso);
+    // this.cambiarValor(this.progreso);
   }
 
 }

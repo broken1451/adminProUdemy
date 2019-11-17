@@ -78,6 +78,7 @@ export class ProfileComponent implements OnInit {
     this.imagenTemporal =  reader.result;
     // console.log('this.imagenTemporal: ', this.imagenTemporal);
     console.log('reader.result: ', reader.result);
+    console.log('reader.result: ', reader);
   };
 
   console.log('archivo: ', archivo);
@@ -85,7 +86,7 @@ export class ProfileComponent implements OnInit {
 
 
 
- }
+  }
 
  cambiarImagen() {
 
