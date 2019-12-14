@@ -1,0 +1,52 @@
+<div class="row animated fadeIn">
+
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Medico: {{medico.nombre}}</h3>
+            <!-- <p class="text-muted m-b-30 font-13"> Bootstrap Elements </p> -->
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form ngNativeValidate #formulario='ngForm' (ngSubmit)= 'guardarMedico(formulario)'>
+                        <div class="form-group">
+                            <label >Nombre Medico</label>
+                            <input [(ngModel)]="medico.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del medico" required>
+                        </div>
+                        <!-- <div hidden class="form-group">
+                            <label >ID Usuario</label>
+                            <input name="usuario._id" [(ngModel)]='usuario._id' type="text" class="form-control" placeholder="id del usuario" required>
+                        </div> -->
+                        <div class="form-group">
+                            <label>Hospital</label>
+                            <!-- <select (change)='cambioSelectHospital($event)' [(ngModel)]="medico.hospital" name="hospital" id="" class="form-control" required> -->
+                            <select (change)='cambioSelectHospital($event.target.value)'  [(ngModel)]="medico.hospital" name="hospital" id="" class="form-control" required>
+                                <option value="">Seleccione un hospital</option>
+                                <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{hospital.nombre}}</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                        <button [routerLink]="['/medicos']" class="btn btn-inverse waves-effect waves-light">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">Hospital</h4>
+            <!-- <img [src]="hospital.img | imagen:'hospitales'" class="rounded img-fluid"> -->
+            <img [src]="hospital.img | imagen:'hospitales'" class="rounded img-fluid">
+        </div>
+    </div>  
+    
+    <div class="col-md-3" *ngIf="medico._id">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">Fotografia</h4>
+            <img [src]="medico.img | imagen:'medicos'" class="rounded img-fluid pointer" (click)="mostrarModal()">
+        </div>
+    </div>    
+
+</div>

@@ -25,7 +25,7 @@ export class SidebarService {
       icono: 'mdi mdi-gauge-lock-open',
       submenu: [
         {titulo: 'Usuario', url: '/usuarios'},
-        {titulo: 'Hospitales', url: '/hospitaless'},
+        {titulo: 'Hospitales', url: '/hospitales'},
         {titulo: 'Medicos', url: '/medicos'},
       ]
     }];

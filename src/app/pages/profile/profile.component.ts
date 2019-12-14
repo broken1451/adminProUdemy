@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
     } else {
       this.usuario.email = usuario.email;
     }
+    // this.usuarioService.actualizarUsuario(this.usuario._id).subscribe( (usuarioActualizado) => {
     this.usuarioService.actualizarUsuario(this.usuario).subscribe( (usuarioActualizado) => {
       console.log('usuarioActualizado: ', usuarioActualizado);
     });

@@ -32,6 +32,8 @@ export class UsuariosComponent implements OnInit {
     this.cargarUsuarios();
     this.modalUploadService.notificacion.subscribe((data: any) => { // notificar que se realizaron cambios al subir la imagen
       console.log('data de notificacion: ', data);
+      this.usuarioService.usuario.img = data.usuarioImgGuardada.img;
+      this.usuarioService.guardarStorage(data.usuarioImgGuardada._id, this.usuarioService.token, this.usuarioService.usuario);
       this.cargarUsuarios();
     });
   }

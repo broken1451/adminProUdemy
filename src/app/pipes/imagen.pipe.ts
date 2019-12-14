@@ -22,10 +22,10 @@ export class ImagenPipe implements PipeTransform {
 
     if (tipoImagen === 'usuarios' ) {
        url = url + '/usuarios/' + imagen;
-    } else if (tipoImagen === 'medicos') {
-       url = url + '/medicos/' + imagen;
-    } else if (tipoImagen === 'hospitales') {
-       url = url + '/hospitales/' + imagen;
+      } else if (tipoImagen === 'hospitales') {
+        url = url + '/hospitales/' + imagen;
+      } else if (tipoImagen === 'medicos') {
+        url = url + '/medicos/' + imagen;
     } else {
       console.log('No existe este tipo de imagen, los tipos de imagenes son usuarios, hospitales y medicos');
       url = url + '/usuarios/xxx';

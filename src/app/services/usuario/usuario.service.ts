@@ -101,13 +101,14 @@ export class UsuarioService {
   }
 
   // Metodo de actualizar usuario
+  // actualizarUsuario(id: string) {
   actualizarUsuario(usuario: Usuario) {
 
     const url = URLSERVICIO + '/usuario/' + usuario._id + '?token=' + this.token; // llamada al servicio
     console.log('url: ', url);
     console.log('token: ', this.token);
 
-    return this.httpClient.put(url, usuario).pipe( map((data: any) => {
+    return this.httpClient.put(url, this.usuario).pipe( map((data: any) => {
       console.log('data del map: ', data);
       const usuarioBD: Usuario =  data.usuarioId;
       // this.usuario = data.usuarioId;

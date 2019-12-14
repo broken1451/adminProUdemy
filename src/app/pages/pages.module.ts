@@ -14,6 +14,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 // Modulos
 import { SharedModule } from '../shared/shared.module';
@@ -31,6 +32,10 @@ import { SettingsService } from '../services/settings/settings.service';
 // Pipes module
 import { PipesModule } from '../pipes/pipes.module';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
+
+
 
 
 
@@ -49,7 +54,10 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
     RxjsComponent,
     ProfileComponent,
     UsuariosComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent
   ],
   exports: [
     DashboardComponent,
@@ -60,8 +68,9 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
     AccountSettingsComponent,
     ProfileComponent,
     UsuariosComponent,
-    ModalUploadComponent
-
+    ModalUploadComponent,
+    MedicosComponent,
+    MedicoComponent
   ],
   imports: [
     CommonModule,
