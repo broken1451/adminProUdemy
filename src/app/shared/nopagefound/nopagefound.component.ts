@@ -8,7 +8,11 @@ declare function initPlugings();
 })
 export class NopagefoundComponent implements OnInit {
 
-  constructor() { }
+  public anio: number;
+
+  constructor() {
+    this.anio = new Date().getFullYear();
+  }
 
   ngOnInit() {
     initPlugings();
