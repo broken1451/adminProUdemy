@@ -47,7 +47,9 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
-    PagesComponent,
+    // Con lazyLoad
+    // PagesComponent,
+    // ModalUploadComponent,
     IncrementadorComponent,
     GraficoDonaComponent,
     AccountSettingsComponent,
@@ -55,24 +57,24 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     RxjsComponent,
     ProfileComponent,
     UsuariosComponent,
-    ModalUploadComponent,
     HospitalesComponent,
     MedicosComponent,
     MedicoComponent,
-    BusquedaComponent
+    BusquedaComponent,
   ],
   exports: [
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
-    PagesComponent,
+    // Con lazyLoad
+    // PagesComponent,
+    // ModalUploadComponent,
     IncrementadorComponent,
     AccountSettingsComponent,
     ProfileComponent,
     UsuariosComponent,
-    ModalUploadComponent,
     MedicosComponent,
-    MedicoComponent
+    MedicoComponent,
   ],
   imports: [
     CommonModule,
@@ -88,3 +90,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
   ]
 })
 export class PagesModule { }
+
+
+
+
+

@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+import { PagesComponent } from './pages/pages.component';
 
 // Servicios
     // import { SettingsService } from './services/settings/settings.service';
     // import { SettingsService } from './services/services.index';
 import { ServiceModule } from './services/service.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -24,15 +26,18 @@ import { ServiceModule } from './services/service.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
-    PagesModule,
     FormsModule,
     ServiceModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    // Con lazyLoad
+      // PagesModule,
+    SharedModule
   ],
   providers: [// SettingsService
   ],

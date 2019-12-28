@@ -7,7 +7,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PormesasComponent } from './pormesas/pormesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginGuardGuard, AdminGuard } from '../services/services.index';
+import { LoginGuardGuard, AdminGuard, VerificaTokenGuard } from '../services/services.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
@@ -16,34 +16,64 @@ import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const pagesroutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [LoginGuardGuard],
-        children: [
-          { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard', descrip: 'Esto es la pagina principal'} },
-          { path: 'progress', component: ProgressComponent, data: {titulo: 'Barra de Progreso', descrip: 'Esto es la pagina de barras'} },
-          { path: 'graficas1', component: Graficas1Component, data: {titulo: 'Graficas', descrip: 'Esto es la pagina graficas'} },
-          { path: 'promesas', component: PormesasComponent, data: {titulo: 'Promesas', descrip: 'Esto es la pagina de promesas'} },
-          { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Reactividad con Rxjs', descrip: 'Esto es la pagina de los observables'} },
-          { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Configuraciones del tema', descrip: 'Esto es la pagina de configuracion de temas'} },
-          { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'} },
-          { path: 'busqueda/:termino', component: BusquedaComponent, data: {titulo: 'Buscador'} },
+  // De forma normal sin lazyLoad
+    // {
+    //     path: '',
+    //     component: PagesComponent,
+    //     canActivate: [LoginGuardGuard],
+    //     children: [
+    //       { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard', descrip: 'Esto es la pagina principal'} },
+    //       { path: 'progress', component: ProgressComponent, data: {titulo: 'Barra de Progreso', descrip: 'Esto es la pagina de barras'} },
+    //       { path: 'graficas1', component: Graficas1Component, data: {titulo: 'Graficas', descrip: 'Esto es la pagina graficas'} },
+    //       { path: 'promesas', component: PormesasComponent, data: {titulo: 'Promesas', descrip: 'Esto es la pagina de promesas'} },
+    //       { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Reactividad con Rxjs', descrip: 'Esto es la pagina de los observables'} },
+    //       { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Configuraciones del tema', descrip: 'Esto es la pagina de configuracion de temas'} },
+    //       { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'} },
+    //       { path: 'busqueda/:termino', component: BusquedaComponent, data: {titulo: 'Buscador'} },
 
-          // Mantenmiento
-          {
-            path: 'usuarios',
-            component: UsuariosComponent,
-            canActivate: [AdminGuard],
-            data: {titulo: 'Mantenimiento de Usuarios'}
-          },
-          { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Mantenimiento de Hospitales'} },
-          { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento de Medicos'} },
-          { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'} },
-          { path: '', pathMatch: 'full' , redirectTo: 'dashboard' },
-        ]
-       }
+    //       // Mantenmiento
+    //       {
+    //         path: 'usuarios',
+    //         component: UsuariosComponent,
+    //         canActivate: [AdminGuard],
+    //         data: {titulo: 'Mantenimiento de Usuarios'}
+    //       },
+    //       { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Mantenimiento de Hospitales'} },
+    //       { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento de Medicos'} },
+    //       { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'} },
+    //       { path: '', pathMatch: 'full' , redirectTo: 'dashboard' },
+    //     ]
+    //    }
 
+  // ===============================================================================================
+  // =================================== Con LazyLoad ==============================================
+  // ===============================================================================================
+
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [VerificaTokenGuard],
+        data: {titulo: 'Dashboard', descrip: 'Esto es la pagina principal'} 
+      },
+      { path: 'progress', component: ProgressComponent, data: {titulo: 'Barra de Progreso', descrip: 'Esto es la pagina de barras'} },
+      { path: 'graficas1', component: Graficas1Component, data: {titulo: 'Graficas', descrip: 'Esto es la pagina graficas'} },
+      { path: 'promesas', component: PormesasComponent, data: {titulo: 'Promesas', descrip: 'Esto es la pagina de promesas'} },
+      { path: 'rxjs', component: RxjsComponent, data: {titulo: 'Reactividad con Rxjs', descrip: 'Esto es la pagina de los observables'} },
+      { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Configuraciones del tema', descrip: 'Esto es la pagina de configuracion de temas'} },
+      { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'} },
+      { path: 'busqueda/:termino', component: BusquedaComponent, data: {titulo: 'Buscador'} },
+
+      // Mantenmiento
+      {
+        path: 'usuarios',
+        component: UsuariosComponent,
+        canActivate: [AdminGuard],
+        data: {titulo: 'Mantenimiento de Usuarios'}
+      },
+      { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Mantenimiento de Hospitales'} },
+      { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento de Medicos'} },
+      { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'} },
+      { path: '', pathMatch: 'full' , redirectTo: 'dashboard' },
 ];
 
 @NgModule({

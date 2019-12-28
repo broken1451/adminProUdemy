@@ -5,11 +5,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
+import { PagesComponent } from './pages/pages.component';
+import { LoginGuardGuard } from './services/services.index';
 
 const routes: Routes = [
 
+// De forma normal sin lazyLoad
+  // { path: 'login', component: LoginComponent },
+  // { path: 'register', component: RegisterComponent },
+  // { path: '**', component: NopagefoundComponent },
+
+
+ // ===============================================================================================
+ // =================================== Con LazyLoad ==============================================
+ // ===============================================================================================
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: '',
+    component: PagesComponent,
+    canActivate: [LoginGuardGuard],
+    // loadChildren: 'path al modulo que quiero cargar de forma dinamica#nombre exacto al modulo '
+    loadChildren: './pages/pages.module#PagesModule'
+
+  },
   { path: '**', component: NopagefoundComponent },
 ];
 
